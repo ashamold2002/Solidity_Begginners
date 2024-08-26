@@ -7,6 +7,7 @@ pragma solidity ^0.8.0;
 
 contract Twitter {
 
+    uint16 constant maxLength=60;
     struct Tweet {
         address author;
         string content;
@@ -20,6 +21,7 @@ contract Twitter {
     function createTweet(string memory _tweet) public {
         // conditional
         // if tweet length <= 280 then we are good, otherwise we revert
+        require(bytes(_tweet).length<=maxLength,"tweet is tooo long");
         
 
         Tweet memory newTweet = Tweet({
